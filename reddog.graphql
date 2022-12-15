@@ -1,0 +1,44 @@
+type Query {
+    getProducts: [Product]
+    getProductById(productId: ID): [Product]
+}
+
+type Mutation {
+    addOrder(storeId: String, firstName: String, lastName: String, loyaltyId: String, orderItems: [OrderItemInput]): Order
+}
+
+type Product {
+    productId: ID!
+    productName: String
+    description: String
+    unitCost: Float
+    unitPrice: Float
+    imageUrl: String
+    categoryId: String
+}
+
+input OrderItemInput {
+    productId: ID!
+    quantity: Int
+}
+
+type OrderItem {
+    productId: String
+    productName: String
+    quantity: Int
+    unitCost: Float
+    unitPrice: Float
+    imageUrl: String
+}
+
+type Order {
+    orderId: ID!
+    orderDate: String
+    orderCompletedDate: String
+    storeId: String
+    firstName: String
+    lastName: String
+    loyaltyId: String
+    orderItems: [OrderItem]
+}
+

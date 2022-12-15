@@ -1,0 +1,25 @@
+mutation {
+	addOrder(firstName: "John", lastName: "Smith", loyaltyId: "42", orderItems: { productId: "1", quantity: 10 }, storeId: "denver")
+}
+
+mutation {
+	addOrder(firstName: "John", lastName: "Smith", loyaltyId: "42", orderItems: { productId: "1", quantity: 10 }, storeId: "denver") {
+		orderId
+	}
+}
+
+
+                        var args = context.Request.Body.As<JObject>(true)["arguments"];  
+                        JObject jsonObject = new JObject();
+                        jsonObject.Add("storeId", "denver");
+                        jsonObject.Add("firstName", "John");
+                        jsonObject.Add("lastName", "Smith");
+                        jsonObject.Add("loyaltyId", "42");
+                        JArray orderItems = new JArray();
+                        JObject orderline = new JObject();
+                        orderline.Add("productId", "1");
+                        orderline.Add("quantity", "1");
+                        orderItems.Add(orderline);
+                        jsonObject.Add("orderItems", orderItems);
+                        return jsonObject.ToString();
+

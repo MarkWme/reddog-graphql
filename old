@@ -1,0 +1,14 @@
+type Query {
+    products(productId: ID): [Product]
+}
+
+type Product {
+    productId: ID!
+    productName: String
+    description: String
+    unitCost: Float
+    unitPrice: Float
+    imageUrl: String
+    categoryId: String
+}
+
